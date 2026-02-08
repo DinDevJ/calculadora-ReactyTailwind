@@ -1,0 +1,37 @@
+@import "tailwindcss";
+
+@layer components {
+
+    /* CORRECCIÓN: En lugar de crear .btn-base y aplicarlo dentro de otros,
+     agrupamos los selectores aquí arriba. 
+     Esto aplica los estilos base a las tres clases de una sola vez.
+  */
+    .btn-operador,
+    .btn-numero,
+    .btn-igual {
+        @apply h-14 sm:h-16 text-xl font-semibold rounded-lg transition-all duration-150 active:scale-95 border border-transparent cursor-pointer;
+    }
+
+    /* Ahora definimos solo los colores específicos de cada uno */
+
+    .btn-operador {
+        @apply bg-gray-700/50 hover:bg-gray-600 text-cyan-400;
+    }
+
+    .btn-numero {
+        @apply bg-gray-800 hover:bg-gray-700 text-white;
+    }
+
+    .btn-igual {
+        @apply bg-blue-600 hover:bg-blue-500 text-white shadow-lg shadow-blue-900/50 text-4xl;
+    }
+
+    /* Contenedores */
+    .calculadora-case {
+        @apply w-full max-w-xs sm:max-w-sm bg-gray-900 rounded-2xl shadow-2xl overflow-hidden border border-gray-800;
+    }
+
+    .calculadora-screen {
+        @apply p-6 text-right space-y-2 bg-gradient-to-b from-gray-800 to-gray-900;
+    }
+}
