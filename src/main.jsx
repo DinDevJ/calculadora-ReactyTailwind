@@ -11,22 +11,15 @@ const filas = [
     ["+/-", "0", ".", "="]
 ];
 
-// --- ESTILOS (HELPER) ---
-// Esta función decide qué color lleva cada botón
 const getClaseBoton = (val) => {
-    // Clases base para TODOS los botones (transición suave, texto grande, redondeado)
     const base = "h-14 sm:h-16 text-xl font-semibold rounded-sm transition-all duration-150 active:scale-95 border border-transparent";
 
-    // 1. Botón IGUAL (=): Azul Windows (Accent)
     if (val === "=") return `${base} bg-green-600 hover:bg-green-500 text-black shadow-lg shadow-green-900/50 text-lg font-semibold`;
 
-    // 2. Operadores y Funciones (C, %, x, -): Gris oscuro
-    // Nota: isNaN funciona, pero excluimos el punto y el +/-
     if (isNaN(val) && val !== "." && val !== "+/-") {
         return `${base} bg-gray-700/50 hover:bg-green-600 text-green-400`; // Texto cyan para resaltar operadores
     }
 
-    // 3. Números (0-9): Gris "Negro suave"
     return `${base} bg-gray-800 hover:bg-gray-700 text-white`;
 };
 
@@ -48,14 +41,14 @@ const RowButtons = ({ valores, manejarClick }) => (
 
 // --- COMPONENTE PRINCIPAL ---
 const Calculadora = () => {
-    // TUS ESTADOS (Sin cambios)
+
     const [pantalla, setPantalla] = useState("0");
     const [historial, setHistorial] = useState("");
     const [valorAnterior, setValorAnterior] = useState(null);
     const [operador, setOperador] = useState(null);
     const [esperarNuevoNumero, setEsperarNuevoNumero] = useState(false);
 
-    // TU LÓGICA DE CALCULAR (Sin cambios - Copia la función 'calcular' aquí)
+    // LÓGICA DE CALCULAR
     const calcular = (num1, num2, op) => {
         const a = parseFloat(num1);
         const b = parseFloat(num2);
@@ -69,7 +62,7 @@ const Calculadora = () => {
         }
     };
 
-    // TU LÓGICA DE CLICKS (Sin cambios - Copia la función 'manejarClick' aquí)
+    // TU LÓGICA DE CLICKS
     const manejarClick = (textoBoton) => {
         if (!isNaN(textoBoton) || textoBoton === ".") {
             if (esperarNuevoNumero) {
